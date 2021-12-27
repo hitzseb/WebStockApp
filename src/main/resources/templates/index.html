@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Product Manager</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1 style="margin:1em 0;">Product Manager</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Origin</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${listProducts}">
+            	<td th:text="${product.id}">ID</td>
+            	<td th:text="${product.name}">Product</td>
+            	<td th:text="${product.brand}">Brand</td>
+            	<td th:text="${product.origin}">Origin</td>
+                <td th:text="${product.stock}">Stock</td>
+                <td th:text="${product.price}">Price</td>
+                <td>
+                	<a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete/' + ${product.id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="new"><button style="margin-top: 1em;" type="submit" class="btn btn-primary">Add Product</button></a>
+</div>    
+</body>
+</html>

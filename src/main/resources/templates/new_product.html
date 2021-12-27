@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Add new product</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1 style="margin:1em 0;">Add new product</h1>
+		<form action="#" th:action="@{/save}" th:object="${product}"
+			method="post">
+
+			<table class="table">
+				<tr>
+					<td>Product:</td>
+					<td><input type="text" th:field="*{name}" /></td>
+				</tr>
+				<tr>
+					<td>Brand:</td>
+					<td><input type="text" th:field="*{brand}" /></td>
+				</tr>
+				<tr>
+					<td>Origin:</td>
+					<td><input type="text" th:field="*{origin}" /></td>
+				</tr>
+				<tr>
+					<td>Stock:</td>
+					<td><input type="text" th:field="*{stock}" /></td>
+				</tr>
+				<tr>
+					<td>Price:</td>
+					<td><input type="text" th:field="*{price}" /></td>
+				</tr>								
+				<tr>
+					<td><button style="margin-top: 2em;" type="submit" class="btn btn-primary">Save</button></td>
+					<td></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
