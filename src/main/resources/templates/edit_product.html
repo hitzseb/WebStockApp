@@ -4,38 +4,44 @@
 <head>
 <meta charset="utf-8" />
 <title>Edit Product</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
 </head>
 <body>
+	<header
+		style="background-color: white; display: flex; justify-content: space-between; margin-bottom: 10vh;">
+		<h5 th:inline="text" style="margin-left: 5vh;">
+			Welcome [[${#httpServletRequest.remoteUser}]]
+			</h3>
+			<form th:action="@{/logout}" method="POST">
+				<button type="submit" class="btn btn-link"
+					style="margin-right: 5vh;">Logout</button>
+			</form>
+	</header>
 	<div class="container">
-		<h1 style="margin:1em 0;">Edit product</h1>
+		<h1 style="margin: 1em 0;">Edit product</h1>
 		<form action="#" th:action="@{/save}" th:object="${product}"
 			method="post">
 
-			<table class="table">			
-				<tr>				
+			<table class="table">
+				<tr>
 					<td>ID:</td>
-					<td>
-						<input type="text" th:field="*{id}" readonly="readonly" />
+					<td><input type="text" th:field="*{id}" readonly="readonly" />
 					</td>
 				</tr>
-				<tr>				
+				<tr>
 					<td>Product:</td>
-					<td>
-						<input type="text" th:field="*{name}" />
-					</td>
+					<td><input type="text" th:field="*{name}" /></td>
 				</tr>
-				<tr>				
+				<tr>
 					<td>Brand:</td>
-					<td>
-						<input type="text" th:field="*{brand}" />
-					</td>
+					<td><input type="text" th:field="*{brand}" /></td>
 				</tr>
-				<tr>				
+				<tr>
 					<td>Origin:</td>
-					<td>
-						<input type="text" th:field="*{origin}" />
-					</td>
+					<td><input type="text" th:field="*{origin}" /></td>
 				</tr>
 				<tr>
 					<td>Stock:</td>
@@ -46,7 +52,8 @@
 					<td><input type="text" th:field="*{price}" /></td>
 				</tr>
 				<tr>
-					<td><button style="margin-top: 2em;" type="submit" class="btn btn-primary">Save</button></td>
+					<td><button style="margin-top: 2em;" type="submit"
+							class="btn btn-primary">Save</button></td>
 					<td></td>
 				</tr>
 			</table>
