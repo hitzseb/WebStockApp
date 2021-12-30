@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="utf-8" />
-<title>Product Manager</title>
+<title>Product List</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header
-		style="background-color: white; display: flex; justify-content: space-between; margin-bottom: 10vh;">
+		style="display: flex; justify-content: space-between; margin-bottom: 10vh;">
 		<h5 th:inline="text" style="margin-left: 5vh;">
 			Welcome [[${#httpServletRequest.remoteUser}]]
 			</h3>
@@ -22,7 +22,7 @@
 			</form>
 	</header>
 	<div class="container">
-		<h1 style="margin: 1em 0;">Product Manager</h1>
+		<h1 style="margin: 1em 0;">Product List</h1>
 		<table class="table">
 			<thead>
 				<tr>
@@ -32,7 +32,7 @@
 					<th>Origin</th>
 					<th>Stock</th>
 					<th>Price</th>
-					<th>Options</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN')">Options</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -43,13 +43,13 @@
 					<td th:text="${product.origin}">Origin</td>
 					<td th:text="${product.stock}">Stock</td>
 					<td th:text="${product.price}">Price</td>
-					<td><a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+					<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/edit/' + ${product.id}}">Edit</a>
 						&nbsp;&nbsp;&nbsp; <a th:href="@{'/delete/' + ${product.id}}">Delete</a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<a href="new"><button style="margin-top: 1em;" type="submit"
+		<a href="new" sec:authorize="hasRole('ROLE_ADMIN')"><button style="margin-top: 1em;" type="submit"
 				class="btn btn-primary">Add Product</button></a>
 	</div>
 </body>

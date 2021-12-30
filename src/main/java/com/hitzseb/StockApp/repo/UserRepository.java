@@ -8,6 +8,6 @@ import com.hitzseb.StockApp.model.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 	
-	@Query("SELECT u FROM User u WHERE u.username = username")
+	@Query("SELECT u FROM User u WHERE u.username = :username")
 	public User getUserByUserName(@Param("username") String username);
 }
